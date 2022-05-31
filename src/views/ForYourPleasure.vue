@@ -7,7 +7,7 @@
             <nav-bar />
           </div>
         </div>
-        <h1 class="title-big">For your pleasure</h1>
+        <header-title :text="`For your pleasure`" />
       </div>
     </div>
     <section class="shop">
@@ -48,54 +48,42 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <div class="shop__item">
-                <img :src="require(`@/assets/img/${cards[0].icon}`)" alt="coffee" />
-                <div class="shop__item-title">
-                  {{ cards[0].text }}
-                </div>
-                <div class="shop__item-country">{{ cards[0].country }}</div>
-                <div class="shop__item-price">{{ cards[0].price }}</div>
-              </div>
-              <div class="shop__item">
-                <img :src="require(`@/assets/img/${cards[1].icon}`)" alt="coffee" />
-                <div class="shop__item-title">
-                  {{ cards[1].text }}
-                </div>
-                <div class="shop__item-country">{{ cards[1].country }}</div>
-                <div class="shop__item-price">{{ cards[1].price }}</div>
-              </div>
-              <div class="shop__item">
-                <img :src="require(`@/assets/img/${cards[2].icon}`)" alt="coffee" />
-                <div class="shop__item-title">
-                  {{ cards[2].text }}
-                </div>
-                <div class="shop__item-country">{{ cards[2].country }}</div>
-                <div class="shop__item-price">{{ cards[2].price }}</div>
-              </div>
-              <div class="shop__item">
-                <img :src="require(`@/assets/img/${cards[3].icon}`)" alt="coffee" />
-                <div class="shop__item-title">
-                  {{ cards[3].text }}
-                </div>
-                <div class="shop__item-country">{{ cards[3].country }}</div>
-                <div class="shop__item-price">{{ cards[3].price }}</div>
-              </div>
-              <div class="shop__item">
-                <img :src="require(`@/assets/img/${cards[4].icon}`)" alt="coffee" />
-                <div class="shop__item-title">
-                  {{ cards[4].text }}
-                </div>
-                <div class="shop__item-country">{{ cards[4].country }}</div>
-                <div class="shop__item-price">{{ cards[4].price }}</div>
-              </div>
-              <div class="shop__item">
-                <img :src="require(`@/assets/img/${cards[5].icon}`)" alt="coffee" />
-                <div class="shop__item-title">
-                  {{ cards[5].text }}
-                </div>
-                <div class="shop__item-country">{{ cards[5].country }}</div>
-                <div class="shop__item-price">{{ cards[5].price }}</div>
-              </div>
+              <best-item
+                :name="goods[0].name"
+                :price="goods[0].price"
+                :image="goods[0].image"
+                classItem="shop__item"
+              />
+              <best-item
+                :name="goods[1].name"
+                :price="goods[1].price"
+                :image="goods[1].image"
+                classItem="shop__item"
+              />
+              <best-item
+                :name="goods[2].name"
+                :price="goods[2].price"
+                :image="goods[2].image"
+                classItem="shop__item"
+              />
+              <best-item
+                :name="goods[3].name"
+                :price="goods[3].price"
+                :image="goods[3].image"
+                classItem="shop__item"
+              />
+              <best-item
+                :name="goods[4].name"
+                :price="goods[4].price"
+                :image="goods[4].image"
+                classItem="shop__item"
+              />
+              <best-item
+                :name="goods[5].name"
+                :price="goods[5].price"
+                :image="goods[5].image"
+                classItem="shop__item"
+              />
             </div>
           </div>
         </div>
@@ -107,53 +95,48 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import BestItem from "@/components/BestItem.vue";
+import HeaderTitle from "@/components/HeaderTitle.vue";
 
 export default {
-  components: { NavBar, BestItem },
+  components: { NavBar, BestItem, HeaderTitle },
   data() {
     return {
-      cards: [
+      goods: [
         {
           id: 0,
-          icon: "good-1.jpg",
-          text: "Solimo Coffee Beans 2kg",
-          country: "Brazil",
-          price: "10.73$",
+          image: "coffee-1.jpg",
+          name: "Solimo Coffee Beans 2kg",
+          price: 10.73,
         },
         {
           id: 1,
-          icon: "good-1.jpg",
-          text: "Presto Coffee Beans 1kg",
-          country: "Brazil",
-          price: "15.99$",
+          image: "coffee-2.jpg",
+          name: "Presto Coffee Beans 1kg",
+          price: 15.99,
         },
         {
           id: 2,
-          icon: "good-1.jpg",
-          text: "AROMISTICO Coffee 1kg",
-          country: "Brazil",
-          price: "6.99$",
+          image: "coffee-3.jpg",
+          name: "AROMISTICO Coffee 1kg",
+          price: 6.99,
         },
         {
           id: 3,
-          icon: "good-1.jpg",
-          text: "Solimo Coffee Beans 2kg",
-          country: "Brazil",
-          price: "10.73$",
+          image: "coffee-1.jpg",
+          name: "Solimo Coffee Beans 2kg",
+          price: 10.73,
         },
         {
           id: 4,
-          icon: "good-1.jpg",
-          text: "Solimo Coffee Beans 2kg",
-          country: "Brazil",
-          price: "10.73$",
+          image: "coffee-2.jpg",
+          name: "Presto Coffee Beans 1kg",
+          price: 15.99,
         },
         {
           id: 5,
-          icon: "good-1.jpg",
-          text: "Solimo Coffee Beans 2kg",
-          country: "Brazil",
-          price: "10.73$",
+          image: "coffee-3.jpg",
+          name: "AROMISTICO Coffee 1kg",
+          price: 6.99,
         },
       ],
     };

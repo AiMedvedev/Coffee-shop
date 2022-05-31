@@ -15,24 +15,35 @@
             :alt="links[0].icon"
         /></router-link>
       </li>
-      <li class="header__item">
-        <router-link :to="links[1].link">{{ links[1].text }}</router-link>
-      </li>
-      <li class="header__item">
-        <router-link :to="links[2].link">{{ links[2].text }}</router-link>
-      </li>
-      <li class="header__item">
-        <router-link :to="links[3].link">{{ links[3].text }}</router-link>
-      </li>
-      <li class="header__item">
-        <router-link :to="links[4].link">{{ links[4].text }}</router-link>
-      </li>
+      <link-component 
+        :link="links[1].link"
+        :text="links[1].text"
+        linkClass="header__item"
+      />
+      <link-component 
+        :link="links[2].link"
+        :text="links[2].text"
+        linkClass="header__item"
+      />
+      <link-component 
+        :link="links[3].link"
+        :text="links[3].text"
+        linkClass="header__item"
+      />
+      <link-component 
+        :link="links[4].link"
+        :text="links[4].text"
+        linkClass="header__item"
+      />
     </ul>
   </header>
 </template>
 
 <script>
+import LinkComponent from "@/components/LinkComponent.vue";
+
 export default {
+  components: { LinkComponent },
   data() {
     return {
       links: [

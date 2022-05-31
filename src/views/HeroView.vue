@@ -9,7 +9,7 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <h1 class="title-big">Everything You Love About Coffee</h1>
+            <header-title :text="`Everything You Love About Coffee`" />
             <img
               class="beanslogo"
               src="@/assets/logo/Beans_logo.svg"
@@ -59,7 +59,24 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <best-item />
+              <best-item 
+              :name="bestsellers[0].name"
+              :price="bestsellers[0].price"
+              :image="bestsellers[0].image"
+              classItem="best__item"
+              />
+              <best-item 
+              :name="bestsellers[1].name"
+              :price="bestsellers[1].price"
+              :image="bestsellers[1].image"
+              classItem="best__item"
+              />
+              <best-item
+              :name="bestsellers[2].name"
+              :price="bestsellers[2].price"
+              :image="bestsellers[2].image"
+              classItem="best__item" 
+              />
             </div>
           </div>
         </div>
@@ -71,8 +88,33 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import BestItem from "@/components/BestItem.vue";
+import HeaderTitle from "@/components/HeaderTitle.vue";
 
 export default {
-  components: { NavBar, BestItem },
+  components: { NavBar, BestItem, HeaderTitle },
+  data() {
+    return {
+      bestsellers: [
+        {
+          id: 0,
+          image: "coffee-1.jpg",
+          name: "Solimo Coffee Beans 2kg",
+          price: 10.73,
+        },
+        {
+          id: 1,
+          image: "coffee-2.jpg",
+          name: "Presto Coffee Beans 1kg",
+          price: 15.99,
+        },
+        {
+          id: 2,
+          image: "coffee-3.jpg",
+          name: "AROMISTICO Coffee 1kg",
+          price: 6.99,
+        },
+      ],
+    };
+  },
 };
 </script>

@@ -11,7 +11,27 @@
                   :alt="links[0].icon"
               /></router-link>
             </li>
-            <li class="footer__item">
+            <link-component
+              :link="links[1].link"
+              :text="links[1].text"
+              linkClass="footer__item"
+            />
+            <link-component
+              :link="links[2].link"
+              :text="links[2].text"
+              linkClass="footer__item"
+            />
+            <link-component
+              :link="links[3].link"
+              :text="links[3].text"
+              linkClass="footer__item"
+            />
+            <link-component
+              :link="links[4].link"
+              :text="links[4].text"
+              linkClass="footer__item"
+            />
+            <!-- <li class="footer__item">
               <router-link :to="links[1].link">{{ links[1].text }}</router-link>
             </li>
             <li class="footer__item">
@@ -22,7 +42,7 @@
             </li>
             <li class="footer__item">
               <router-link :to="links[4].link">{{ links[4].text }}</router-link>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -36,7 +56,10 @@
 </template>
 
 <script>
+import LinkComponent from "@/components/LinkComponent.vue";
+
 export default {
+  components: { LinkComponent },
   data() {
     return {
       links: [
