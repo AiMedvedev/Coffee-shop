@@ -31,37 +31,10 @@ import LinkComponent from "@/components/LinkComponent.vue";
 
 export default {
   components: { LinkComponent },
-  data() {
-    return {
-      links: {
-        header: {
-          link: "/",
-          icon: "Logo.svg",
-        },
-        other: [
-          {
-            id: 0,
-            text: "Our coffee",
-            link: "/our-coffee",
-          },
-          {
-            id: 1,
-            text: "For your pleasure",
-            link: "/your-pleasure",
-          },
-          {
-            id: 2,
-            text: "Contact us",
-            link: "/contact-us",
-          },
-          {
-            id: 3,
-            text: "Thank You",
-            link: "/thanks",
-          },
-        ],
-      },
-    };
+  computed: {
+    links() {
+      return this.$store.getters["getHeaderLinks"];
+    },
   },
 };
 </script>

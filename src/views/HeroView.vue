@@ -65,7 +65,7 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
               <best-item
-                v-for="item in bestsellers"
+                v-for="item in cards.bestsellers"
                 :key="item.id"
                 :name="item.name"
                 :price="item.price"
@@ -84,34 +84,14 @@
 import NavBar from "@/components/NavBar.vue";
 import BestItem from "@/components/BestItem.vue";
 import HeaderTitle from "@/components/HeaderTitle.vue";
-import { v4 as uuidv4 } from "uuid";
 import { scrollIntoView } from "seamless-scroll-polyfill";
 
 export default {
   components: { NavBar, BestItem, HeaderTitle },
-  data() {
-    return {
-      bestsellers: [
-        {
-          id: uuidv4(),
-          image: "coffee-1.jpg",
-          name: "Solimo Coffee Beans 2kg",
-          price: 10.73,
-        },
-        {
-          id: uuidv4(),
-          image: "coffee-2.jpg",
-          name: "Presto Coffee Beans 1kg",
-          price: 15.99,
-        },
-        {
-          id: uuidv4(),
-          image: "coffee-3.jpg",
-          name: "AROMISTICO Coffee 1kg",
-          price: 6.99,
-        },
-      ],
-    };
+  computed: {
+    cards() {
+      return this.$store.getters["getBestsellers"];
+    },
   },
   methods: {
     smoothScroll() {
