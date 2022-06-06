@@ -70,12 +70,11 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <best-item
-                v-for="item in cards.coffee"
-                :key="item.id"
-                :name="item.name"
-                :price="item.price"
-                :image="item.image"
+                v-for="card in coffee"
+                :key="card.id"
                 classItem="shop__item"
+                :card="card"
+                @onNavigate="navigate"
               />
             </div>
           </div>
@@ -90,12 +89,20 @@ import NavBar from "@/components/NavBar.vue";
 import BestItem from "@/components/BestItem.vue";
 import HeaderTitle from "@/components/HeaderTitle.vue";
 
+import {navigate} from "../mixins/navigate";
+
 export default {
   components: { NavBar, BestItem, HeaderTitle },
   computed: {
-    cards() {
+    coffee() {
       return this.$store.getters["getCoffee"];
     },
   },
+  data() {
+    return {
+      name: 'coffee'
+    }
+  },
+  mixins: [navigate]
 };
 </script>
