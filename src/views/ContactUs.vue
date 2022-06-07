@@ -78,12 +78,11 @@
 
               <div class="form-group row textarea">
                 <div class="col col-12 d-flex justify-content-start">
-                  <label for="pmessage" class="mb-3 mt-3 text-center">
+                  <label for="message" class="mb-3 mt-3 text-center">
                     Your message
                     <span style="color: red">*</span>
                   </label>
                 </div>
-                <div class="col col-12">
                   <textarea
                     v-model="v$.message.$model"
                     class="form-control"
@@ -95,6 +94,21 @@
                   <span v-for="error in v$.message.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </span>
+                  <div class="col col-12">
+                  <div>
+                    <input
+                      checked
+                      @change="checkboxChange"
+                      v-model="v$.terms.$model"
+                      type="checkbox"
+                      name="terms"
+                      id="terms"
+                    />
+                    <span> Согласен с договором оферты</span>
+                    <span v-if="terms === false">
+                      <br/> Соглашение необходимо отметить
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -132,6 +146,7 @@ export default {
       name: "",
       email: "",
       phone: "",
+      terms: false,
       message: "",
     };
   },
@@ -140,18 +155,33 @@ export default {
       name: { required },
       email: { required, email },
       phone: "",
+      terms: {
+        required: true
+      },
       message: {
         required,
         maxLength: maxLength(140),
-        minLength: helpers.withMessage("5 symbols minimum, please", minLength),
+        minLength: helpers.withMessage("6 symbols minimum, please", minLength),
       },
     };
   },
   methods: {
     async submit() {
       const isFormCorrect = await this.v$.$validate();
-      if (!isFormCorrect) return;
+      if (!isFormCorrect || this.terms === false) {
+        
+        return
+        };
+      console.log({
+        name: this.name,
+        email: this.email,
+        terms: this.terms,
+        message: this.message,
+      });
     },
+    checkboxChange() {
+      return this.terms = !this.terms
+    }
   },
 };
 </script>
