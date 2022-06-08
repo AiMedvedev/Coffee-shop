@@ -101,20 +101,6 @@
       "email": "alex@mail.ru",
       "message": "Just for info",
       "id": 1
-    },
-    {
-      "name": "Ivan",
-      "email": "ivan@mail.ru",
-      "terms": true,
-      "message": "Another one",
-      "id": 2
-    },
-    {
-      "name": "Jack",
-      "email": "sdasd@twe.ru",
-      "terms": true,
-      "message": "Something",
-      "id": 3
     }
   ]
 }

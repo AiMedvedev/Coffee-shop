@@ -17,8 +17,8 @@
     <section class="shop" v-if="product">
       <div class="container">
         <div class="row">
-          <div class="col-lg-5 offset-0 offset-lg-1">
-            <img alt="coffee_item" class="shop__girl" :src="product.image" />
+          <div class="col-lg-5 offset-1">
+            <img alt="coffee__item" :src="product.image" />
           </div>
           <div class="col-lg-4">
             <div class="title">About it</div>
@@ -37,9 +37,7 @@
             </div>
             <div class="shop__point">
               <span>Price:</span>
-              <span class="shop__point-price">
-                {{ product.price }}</span
-              >
+              <span class="shop__point-price"> {{ product.price }}</span>
             </div>
           </div>
         </div>
@@ -59,9 +57,9 @@ export default {
     };
   },
   mounted() {
-    fetch(`http://localhost:3000/coffee/${this.$route.params.id}`)
+    fetch(`http://localhost:3000/${this.pageName}/${this.$route.params.id}`)
       .then((res) => res.json())
-      .then((data) => this.product = data);
+      .then((data) => (this.product = data));
   },
   destroyed() {
     this.product = null;

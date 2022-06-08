@@ -23,6 +23,15 @@
     background-size: cover;
 }
 
+.col-lg-5 {
+    img {
+        display: block;
+        margin: 0 auto;
+        width: 420px;
+        height: 380px;
+        object-fit: cover;
+    }
+}
 .shop {
     padding: 70px 0 40px 0;
     .title {

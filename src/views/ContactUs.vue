@@ -146,7 +146,6 @@ export default {
       name: "",
       email: "",
       phone: "",
-      terms: "",
       message: "",
     };
   },
