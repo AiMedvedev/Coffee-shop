@@ -1,25 +1,24 @@
 <template>
   <main>
-    <div class="banner" :class="pageName === 'coffee' ? 'coffepage-banner' : 'goodspage-banner'">
+    <div
+      class="banner"
+      :class="pageName === 'coffee' ? 'coffepage-banner' : 'goodspage-banner'"
+    >
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
             <nav-bar />
           </div>
         </div>
-        <h1 class="title-big">{{ card.name }}</h1>
+        <h1 class="title-big" v-if="product">{{ product.name }}</h1>
       </div>
     </div>
 
-    <section class="shop">
+    <section class="shop" v-if="product">
       <div class="container">
         <div class="row">
           <div class="col-lg-5 offset-0 offset-lg-1">
-            <img
-              :src="require(`@/assets/img/${card.image}`)"
-              alt="coffee item"
-              class="shop__girl"
-            />
+            <img alt="coffee_item" class="shop__girl" :src="product.image" />
           </div>
           <div class="col-lg-4">
             <div class="title">About it</div>
@@ -30,16 +29,17 @@
             />
             <div class="shop__point">
               <span>Country:</span>
-              Brasil
+              {{ product.country }}
             </div>
             <div class="shop__point">
               <span>Description</span>
-              Lorem ipsum dolor sit amet, oidhfosdiihjf osfioer whfnfjwoi jij w
-              rwdwd wedjwdowijdw. Rsdqwd rrorotp xca nndjowknf.
+              {{ product.description }}
             </div>
             <div class="shop__point">
               <span>Price:</span>
-              <span class="shop__point-price"> {{ card.price | addCurrency }}</span>
+              <span class="shop__point-price">
+                {{ product.price }}</span
+              >
             </div>
           </div>
         </div>
@@ -53,13 +53,27 @@ import NavBar from "@/components/NavBar.vue";
 
 export default {
   components: { NavBar },
+  data() {
+    return {
+      product: null,
+    };
+  },
+  mounted() {
+    fetch(`http://localhost:3000/coffee/${this.$route.params.id}`)
+      .then((res) => res.json())
+      .then((data) => this.product = data);
+  },
+  destroyed() {
+    this.product = null;
+  },
   computed: {
     pageName() {
       return this.$route.name;
     },
     card() {
-        const pageGetter = this.pageName === 'coffee' ? 'getCoffeeById' : 'getGoodsById'    
-        return this.$store.getters[pageGetter](this.$route.params.id);
+      const pageGetter =
+        this.pageName === "coffee" ? "getCoffeeById" : "getGoodsById";
+      return this.$store.getters[pageGetter](this.$route.params.id);
     },
   },
 };

@@ -146,7 +146,7 @@ export default {
       name: "",
       email: "",
       phone: "",
-      terms: false,
+      terms: "",
       message: "",
     };
   },
@@ -171,13 +171,28 @@ export default {
       if (!isFormCorrect || this.terms === false) {
         
         return
-        };
-      console.log({
+      };
+
+      const message = {
         name: this.name,
         email: this.email,
         terms: this.terms,
         message: this.message,
-      });
+      }
+
+      fetch('http://localhost:3000/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(message)
+      })
+
+      this.name = '',
+      this.email = '',
+      this.phone = '',
+      this.terms = false,
+      this.message = ''
     },
     checkboxChange() {
       return this.terms = !this.terms
