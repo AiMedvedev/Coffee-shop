@@ -68,7 +68,7 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <div class="shop__wrapper">
+            <div class="shop__wrapper" v-if="!isLoading">
               <best-item
                 v-for="card in coffee"
                 :key="card.id"
@@ -77,6 +77,7 @@
                 @onNavigate="navigate"
               />
             </div>
+            <spinner-component v-else/>
           </div>
         </div>
       </div>
@@ -88,22 +89,23 @@
 import NavBar from "@/components/NavBar.vue";
 import BestItem from "@/components/BestItem.vue";
 import HeaderTitle from "@/components/HeaderTitle.vue";
-
+import SpinnerComponent from "@/components/SpinnerComponent.vue";
 import {navigate} from "../mixins/navigate";
+import {spinner} from "../mixins/spinner";
 
 export default {
-  components: { NavBar, BestItem, HeaderTitle },
+  components: { NavBar, BestItem, HeaderTitle, SpinnerComponent },
   computed: {
     coffee() {
       return this.$store.getters["getCoffee"];
-    },
+    }
   },
   data() {
     return {
       name: 'coffee'
     }
   },
-  mixins: [navigate],
+  mixins: [navigate, spinner],
   mounted() {
     fetch('http://localhost:3000/coffee')
     .then(res => res.json())

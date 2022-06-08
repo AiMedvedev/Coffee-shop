@@ -101,6 +101,13 @@
       "email": "alex@mail.ru",
       "message": "Just for info",
       "id": 1
+    },
+    {
+      "name": "asdasdsad",
+      "email": "asdasd@wsdasd.er",
+      "terms": true,
+      "message": "asdasdasdas",
+      "id": 2
     }
   ]
 }

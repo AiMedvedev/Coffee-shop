@@ -83,18 +83,18 @@
                     <span style="color: red">*</span>
                   </label>
                 </div>
-                  <textarea
-                    v-model="v$.message.$model"
-                    class="form-control"
-                    name="message"
-                    id="message"
-                    rows="5"
-                    placeholder="Leave your comments here"
-                  ></textarea>
-                  <span v-for="error in v$.message.$errors" :key="error.$uid">
-                    {{ error.$message }}
-                  </span>
-                  <div class="col col-12">
+                <textarea
+                  v-model="v$.message.$model"
+                  class="form-control"
+                  name="message"
+                  id="message"
+                  rows="5"
+                  placeholder="Leave your comments here"
+                ></textarea>
+                <span v-for="error in v$.message.$errors" :key="error.$uid">
+                  {{ error.$message }}
+                </span>
+                <div class="col col-12">
                   <div>
                     <input
                       checked
@@ -106,7 +106,8 @@
                     />
                     <span> Согласен с договором оферты</span>
                     <span v-if="terms === false">
-                      <br/> Соглашение необходимо отметить
+                      <br />
+                      Соглашение необходимо отметить
                     </span>
                   </div>
                 </div>
@@ -147,6 +148,7 @@ export default {
       email: "",
       phone: "",
       message: "",
+      terms: "",
     };
   },
   validations() {
@@ -155,7 +157,7 @@ export default {
       email: { required, email },
       phone: "",
       terms: {
-        required: true
+        required
       },
       message: {
         required,
@@ -168,34 +170,33 @@ export default {
     async submit() {
       const isFormCorrect = await this.v$.$validate();
       if (!isFormCorrect || this.terms === false) {
-        
-        return
-      };
+        return;
+      }
 
       const message = {
         name: this.name,
         email: this.email,
         terms: this.terms,
         message: this.message,
-      }
+      };
 
-      fetch('http://localhost:3000/contacts', {
-        method: 'POST',
+      fetch("http://localhost:3000/contacts", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(message)
-      })
+        body: JSON.stringify(message),
+      });
 
-      this.name = '',
-      this.email = '',
-      this.phone = '',
-      this.terms = false,
-      this.message = ''
+      (this.name = ""),
+        (this.email = ""),
+        (this.phone = ""),
+        (this.terms = false),
+        (this.message = "");
     },
     checkboxChange() {
-      return this.terms = !this.terms
-    }
+      return !this.terms;
+    },
   },
 };
 </script>

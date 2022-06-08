@@ -63,7 +63,7 @@
         <div class="title">Our best</div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <div class="best__wrapper">
+            <div class="best__wrapper" v-if="!isLoading">
               <best-item
                 v-for="card in bestsellers"
                 :key="card.id"
@@ -71,21 +71,24 @@
                 :card="card"
               />
             </div>
+            <spinner-component v-else/>
           </div>
         </div>
       </div>
     </section>
   </main>
-</template>
+</template> 
     
 <script>
 import NavBar from "@/components/NavBar.vue";
 import BestItem from "@/components/BestItem.vue";
 import HeaderTitle from "@/components/HeaderTitle.vue";
-import { scrollIntoView } from "seamless-scroll-polyfill";
+import SpinnerComponent from "@/components/SpinnerComponent.vue";
+import {scrollIntoView} from "seamless-scroll-polyfill";
+import {spinner} from "../mixins/spinner";
 
 export default {
-  components: { NavBar, BestItem, HeaderTitle },
+  components: { NavBar, BestItem, HeaderTitle, SpinnerComponent },
   mounted() {
     fetch('http://localhost:3000/bestsellers')
     .then(res => res.json())
@@ -94,7 +97,7 @@ export default {
   computed: {
     bestsellers() {
       return this.$store.getters["getBestsellers"];
-    },
+    }
   },
   methods: {
     smoothScroll() {
@@ -104,5 +107,6 @@ export default {
       });
     },
   },
+  mixins: [spinner]
 };
 </script>
