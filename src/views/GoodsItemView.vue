@@ -27,11 +27,11 @@
               alt="Beans logo"
               class="beanslogo"
             />
-            <div class="shop__point">
+            <div class="shop__point" v-if="product.country">
               <span>Country:</span>
               {{ product.country }}
             </div>
-            <div class="shop__point">
+            <div class="shop__point" v-if="product.description">
               <span>Description</span>
               {{ product.description }}
             </div>
