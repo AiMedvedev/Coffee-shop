@@ -6,6 +6,12 @@
 
 Применяются компоненты, миксины, валидаторы, фильтры и работа с базой данных db.json.
 
+
+npm run derve
+json-server --watch db.json
+
+
+
 ## Project setup
 ```
 npm install
