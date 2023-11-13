@@ -1,31 +1,20 @@
 # coffee-shop
+Cайт кофейного магазина, созданный на VUE.js.
 
-Учебный проект сайта кофейного магазина на VUE.js.
-
-Используются HTML, CSS, JavaScript, Vue.js.
-
-Применяются компоненты, миксины, валидаторы, фильтры и работа с базой данных db.json.
-
-
-npm run derve
-json-server --watch db.json
-
-
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
+## Запуск
+Для запуска проекта нужно:
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
+и 
 ```
-npm run build
+json-server --watch db.json
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Реализованный функционал
+- Переход по страницам SPA без перезагрузки страницы
+- Подключена база данных JSON-server
+- Форма обратной связи
+- Живой поиск по названию и фильтрация кофе по стране производства
+
+
