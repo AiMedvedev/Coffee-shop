@@ -125,7 +125,7 @@ export default {
   },
   mixins: [navigate, spinner],
   mounted() {
-    fetch("http://localhost:3000/coffee")
+    fetch("https://coffeeshop-3e64c-default-rtdb.firebaseio.com/coffee")
       .then((res) => res.json())
       .then((data) => this.$store.dispatch("setCoffeeData", data));
   },
@@ -134,7 +134,7 @@ export default {
       this.onSort(event.target.value);
     }, 500),
     onSort(value) {
-      fetch(`http://localhost:3000/coffee?q=${value}`)
+      fetch(`https://coffeeshop-3e64c-default-rtdb.firebaseio.com/coffee?q=${value}`)
         .then((res) => res.json())
         .then((data) => this.$store.dispatch("setCoffeeData", data));
     },

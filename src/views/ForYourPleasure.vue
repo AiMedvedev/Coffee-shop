@@ -86,7 +86,7 @@ export default {
     }
   },
   mounted() {
-    fetch('http://localhost:3000/goods')
+    fetch('https://coffeeshop-3e64c-default-rtdb.firebaseio.com/goods')
     .then(res => res.json())
     .then(data => this.$store.dispatch("setGoodsData", data))
   },

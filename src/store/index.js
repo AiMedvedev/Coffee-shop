@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import links from './links';
-import bestsellers from './bestsellers';
-import coffee from './coffee';
-import goods from './goods';
-import isLoading from './isLoading';
+import links from './links.js';
+import bestsellers from './bestsellers.js';
+import coffee from './coffee.js';
+import goods from './goods.js';
+import isLoading from './isLoading.js';
 
 Vue.use(Vuex);
 

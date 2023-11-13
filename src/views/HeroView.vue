@@ -90,7 +90,7 @@ import {spinner} from "../mixins/spinner";
 export default {
   components: { NavBar, BestItem, HeaderTitle, SpinnerComponent },
   mounted() {
-    fetch('http://localhost:3000/bestsellers')
+    fetch('https://coffeeshop-3e64c-default-rtdb.firebaseio.com/bestsellers')
     .then(res => res.json())
     .then(data => this.$store.dispatch("setBestsellersData", data))
   },

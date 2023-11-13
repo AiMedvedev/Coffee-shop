@@ -57,7 +57,7 @@ export default {
     };
   },
   mounted() {
-    fetch(`http://localhost:3000/${this.pageName}/${this.$route.params.id}`)
+    fetch(`https://coffeeshop-3e64c-default-rtdb.firebaseio.com/${this.pageName}/${this.$route.params.id}`)
       .then((res) => res.json())
       .then((data) => (this.product = data));
   },

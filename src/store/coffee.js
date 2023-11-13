@@ -34,10 +34,7 @@ const coffee = {
     },
     getters: {
         getCoffee(state) {
-            return state.coffee/* .filter(item => 
-                item.name.toLowerCase().includes(state.searchValue.toLowerCase()))
-                .filter(item => 
-                    item.country.toLowerCase().includes(state.sortValue.toLowerCase()));  Фильтрация уже в полученном массиве  */
+            return state.coffee
         },
         getCoffeeById(state) {
             return (id) => {

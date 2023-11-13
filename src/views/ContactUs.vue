@@ -104,7 +104,7 @@
                       name="terms"
                       id="terms"
                     />
-                    <span> Согласен с договором оферты</span>
+                    <span> Согласен договором оферты</span>
                     <span v-if="terms === false">
                       <br />
                       Соглашение необходимо отметить
@@ -180,7 +180,7 @@ export default {
         message: this.message,
       };
 
-      fetch("http://localhost:3000/contacts", {
+      fetch("https://coffeeshop-3e64c-default-rtdb.firebaseio.com/contacts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -189,11 +189,14 @@ export default {
       });
 
       (this.name = ""),
-        (this.email = ""),
-        (this.phone = ""),
-        (this.terms = false),
-        (this.message = "");
+      (this.email = ""),
+      (this.phone = ""),
+      (this.terms = false),
+      (this.message = "");
+
+      alert('Your request was recieved!');
     },
+
     checkboxChange() {
       return !this.terms;
     },
